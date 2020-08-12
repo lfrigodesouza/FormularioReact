@@ -8,11 +8,23 @@ function App() {
   return (
     <Container component="article" maxWidth="sm">
       <Typography variant="h3" component="h1" align="center">
-        Formulário de cadastro
+        Formulário de Cadastro
       </Typography>
-      <FormularioCadastro />
+      <FormularioCadastro onSubmit={onSubmitHandler} validarCPF={validarCpf} />
     </Container>
   );
+}
+
+function onSubmitHandler(dados) {
+  console.log(dados);
+}
+
+function validarCpf(cpf) {
+  if (cpf.length !== 11) {
+    return { valido: false, texto: "CPF deve ter 11 dígitos" };
+  } else {
+    return { valido: true, texto: "" };
+  }
 }
 
 export default App;
